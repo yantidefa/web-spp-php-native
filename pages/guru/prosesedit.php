@@ -1,0 +1,33 @@
+<?php
+include ("../../inc/koneksi.php");
+	$satu   =	mysqli_real_escape_string($koneksi, $_POST['idguru']);	
+	$dua  	=	mysqli_real_escape_string($koneksi, $_POST['namaguru']);
+
+if ($satu=="" || $dua=="" ){
+
+}
+
+else {
+
+$query = mysqli_query ($koneksi,"UPDATE guru SET 
+	idguru = '$satu' ,     	
+	namaguru = '$dua' WHERE guru.idguru='$satu';")
+ or die(mysqli_error($koneksi));
+
+ header('location:../../Admin/index.php?page=guru');
+
+?>		
+
+<div class="alert alert-block alert-success">
+	<button type="button" class="close" data-dismiss="alert">
+		<i class="icon-remove"></i>
+	</button>
+
+	<i class="icon-ok green"></i>
+	<h4>Data Berhasil di Tambahkan</h4>
+
+</div>
+<?php 
+}
+ ?>
+
